@@ -43,7 +43,9 @@ jobs:
             buildozer-${{ runner.os }}-
 
       - name: Compiler l'APK
-        run: buildozer -v android debug
+        run: |
+          export ACLOCAL_PATH=/usr/share/aclocal
+          buildozer -v android debug
 
       - name: Publier l'APK
         uses: actions/upload-artifact@v4
