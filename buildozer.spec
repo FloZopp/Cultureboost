@@ -21,7 +21,6 @@ version = 2.0
 # - certifi, openssl : indispensables pour les appels HTTPS aux API
 # - requests/urllib3 : confort reseau
 requirements = python3,kivy==2.3.1,certifi,openssl
-p4a.branch = release-2024.1.21
 
 # Orientation de l'ecran
 orientation = portrait
