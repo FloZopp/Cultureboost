@@ -1,0 +1,61 @@
+name: Compiler l'APK CultureBoost
+
+# Declenche la compilation a chaque envoi de code (push) ou manuellement
+on:
+  push:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  build-apk:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Recupere le code du depot
+      - name: Recuperer le code
+        uses: actions/checkout@v4
+
+      # 2. Installe Python
+      - name: Installer Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      # 3. Installe les dependances systeme necessaires a la compilation
+      - name: Installer les outils systeme
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            git zip unzip openjdk-17-jdk python3-pip \
+            autoconf libtool pkg-config zlib1g-dev \
+            libncurses5-dev libncursesw5-dev libtinfo5 cmake \
+            libffi-dev libssl-dev build-essential ccache
+
+      # 4. Installe Buildozer et Cython
+      - name: Installer Buildozer
+        run: |
+          python -m pip install --upgrade pip
+          pip install buildozer cython==0.29.36
+
+      # 5. Met en cache les outils Android (SDK/NDK) pour accelerer les builds suivants
+      - name: Mettre en cache le SDK/NDK Android
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.buildozer
+            ~/.android
+          key: buildozer-${{ runner.os }}-${{ hashFiles('buildozer.spec') }}
+          restore-keys: |
+            buildozer-${{ runner.os }}-
+
+      # 6. Compile l'APK (mode debug : installable directement sur le telephone)
+      - name: Compiler l'APK
+        run: buildozer -v android debug
+
+      # 7. Publie l'APK comme fichier telechargeable
+      - name: Publier l'APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: CultureBoost-APK
+          path: bin/*.apk
+          if-no-files-found: error
