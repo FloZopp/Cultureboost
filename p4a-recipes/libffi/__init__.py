@@ -3,12 +3,12 @@ from pythonforandroid.recipes.libffi import LibffiRecipe as _ParentLibffi
 
 class LibffiRecipe(_ParentLibffi):
     """
-    Reprend la recette libffi officielle de python-for-android, mais epingle
-    la version 3.4.6 (compatible avec autoconf/libtool recents). Toutes les
-    autres methodes (get_include_dirs, etc.) sont heritees telles quelles.
+    Recette libffi officielle de p4a, epinglee en version 3.4.6 et sans
+    les patches de l'ancienne version (incompatibles avec la 3.4.6).
     """
     version = "3.4.6"
     url = "https://github.com/libffi/libffi/releases/download/v{version}/libffi-{version}.tar.gz"
+    patches = []
 
 
 recipe = LibffiRecipe()
