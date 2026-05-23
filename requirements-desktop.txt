@@ -1,0 +1,6 @@
+# Dependances pour tester CultureBoost sur ordinateur.
+# Installation :  pip install -r requirements-desktop.txt
+# (Sur Android, ces dependances sont gerees automatiquement par buildozer.spec)
+
+kivy==2.3.1
+certifi
