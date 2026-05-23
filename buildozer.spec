@@ -21,6 +21,7 @@ version = 2.0
 # - certifi, openssl : indispensables pour les appels HTTPS aux API
 # - requests/urllib3 : confort reseau
 requirements = python3,kivy==2.3.1,certifi,openssl
+p4a.local_recipes = ./p4a-recipes
 
 # Orientation de l'ecran
 orientation = portrait
