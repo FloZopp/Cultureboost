@@ -31,7 +31,6 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install "cython<3.0" buildozer==1.5.0
-          pip install "python-for-android==2024.1.21"
 
       - name: Mettre en cache le SDK/NDK Android
         uses: actions/cache@v4
