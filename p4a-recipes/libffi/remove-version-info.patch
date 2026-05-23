@@ -1,0 +1,11 @@
+--- a/include/Makefile.am
++++ b/include/Makefile.am
+@@ -7,7 +7,7 @@ AM_CFLAGS = $(FFI_DEBUG_CFLAGS)
+ nodist_includes_HEADERS = ffi.h ffitarget.h
+ includesdir = $(libdir)/@PACKAGE_NAME@-@PACKAGE_VERSION@/include
+ 
+-pkgconfigdir = $(libdir)/pkgconfig
++pkgconfigdir = $(libdir)/../pkgconfig
+ pkgconfig_DATA = libffi.pc
+ 
+ # Subdir rules
