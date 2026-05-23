@@ -20,7 +20,7 @@ version = 2.0
 # - python3, kivy : le moteur de l'app
 # - certifi, openssl : indispensables pour les appels HTTPS aux API
 # - requests/urllib3 : confort reseau
-requirements = python3,kivy==2.3.1,certifi,openssl,requests,urllib3,chardet,idna
+requirements = python3,kivy==2.3.1,certifi,openssl
 
 # Orientation de l'ecran
 orientation = portrait
